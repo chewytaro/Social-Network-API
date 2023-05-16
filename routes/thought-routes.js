@@ -3,7 +3,7 @@ const thoughtController  = require('../controllers/thought-controller');
 
 const {
     getAllThoughts,
-    getThoughtsById,
+    getThoughtById,
     createThought,
     updateThought,
     deleteThought, 
@@ -16,13 +16,13 @@ router.route('/')
     .get(createThought);
 
 router.route('/:thoughtId')
-    .get(getThoughtsById)
+    .get(getThoughtById)
     .post(createThought);
 
 router.route('/:thoughtId')
-    .get(getThoughtsById)
+    .get(getThoughtById)
     .put(updateThought)
-    .dlete(deleteThought);
+    .delete(deleteThought);
 
 router.route('/:thoughtId/reactions')
     .post(addReaction)
