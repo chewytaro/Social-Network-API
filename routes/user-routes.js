@@ -1,28 +1,34 @@
 const router = require('express').Router();
-
-const { get } = require('mongoose');
-
 const {
-    getAllUsers,
-    getUserById,
-    createUser,
-    updateUser,
-    deleteUser,
-    addFriend,
-    removeFriend
+  getAllUsers,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+  addFriend,
+  removeFriend,
 } = require('../controllers/user-controller');
 
-router.route('/')
-    .get(getAllUsers)
-    .post(createUser);
+// Set up routes for /api/users
 
-router.route('/:id')
-    .get(getUserById)
-    .put(updateUser)
-    .delete(deleteUser);
+router
+  .route('/')
+  .get(getAllUsers)
+  .post(createUser);
 
-router.route('/:userId/friends/:friendId')
-    .post(addFriend)
-    .delete(removeFriend);
+// Set up routes for /api/users/:id
 
-module.exports = router; 
+router
+  .route('/:id')
+  .get(getUserById)
+  .put(updateUser)
+  .delete(deleteUser);
+
+// Set up routes for /api/users/:userId/friends/:friendId
+
+router
+  .route('/:userId/friends/:friendId')
+  .post(addFriend)
+  .delete(removeFriend);
+
+module.exports = router;
